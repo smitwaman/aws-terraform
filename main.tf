@@ -48,7 +48,7 @@ resource "aws_instance" "EC2" {
   ami             = "ami-06b74af9fe7907906"  # Specify your desired AMI
   instance_type   = "t2.micro"     # Specify your desired instance type
   subnet_id       = aws_subnet.public_subnet_b.id
-  security_groups = [aws_security_group.instance_sg.name]
+  security_groups = [aws_security_group.allow_web.name]
 
   # Example: Provisioning script to install software
   user_data = <<-EOF
