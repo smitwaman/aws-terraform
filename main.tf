@@ -59,4 +59,17 @@ module "ec2_instance" {
   security_group_ids = ["sg-12345678"]
 }
 
+# Provisioner to execute shell script
+provisioner "remote-exec" {
+  inline = [
+    "chmod +x /tmp/setup.sh",          # Make script executable
+    "sudo /tmp/setup.sh"               # Execute the script
+  ]
 
+  connection {
+    type        = "ssh"
+    user        = "ec2-user"            # Specify the SSH user for the instance
+    private_key = file("path/to/your/private_key.pem")  # Specify the path to your private key
+    host        = self.public_ip       # Use public IP to connect
+  }
+}
