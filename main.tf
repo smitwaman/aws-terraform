@@ -44,4 +44,21 @@ module "security_group" {
   vpc_id = module.vpc.vpc_id
 }
 
+resource "aws_instance" "EC2" {
+  ami             = "ami-06b74af9fe7907906"  # Specify your desired AMI
+  instance_type   = "t2.micro"     # Specify your desired instance type
+  subnet_id       = aws_subnet.public_subnet.id
+  security_groups = [aws_security_group.instance_sg.name]
 
+  # Example: Provisioning script to install software
+  user_data = <<-EOF
+              #!/bin/bash
+              yum update -y
+              yum install -y docker
+              systemctl start docker
+              EOF
+
+  tags = {
+    Name = "Instance"
+  }
+}
