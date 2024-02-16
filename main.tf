@@ -6,7 +6,7 @@ module "vpc" {
 
 
 module "terraform_backend" {
-  source      = "./modules/s3_backend"
+  source      = "./modules/s3"
   bucket_name = "17022024"
   region      = "us-east-2"
 }
