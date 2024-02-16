@@ -50,26 +50,3 @@ module "security_group" {
 }
 
 
-module "ec2_instance" {
-  source = "./modules/ec2_instance"
-
-  ami_id             = "ami-0748d13ffbc370c2b (64-bit (Arm))"
-  instance_type      = "t2.micro"
-  key_name           = "test.pem"
-  security_group_ids = [""]
-}
-
-# Provisioner to execute shell script
-provisioner "remote-exec" {
-  inline = [
-    "chmod +x ./setup.sh",          # Make script executable
-    "sudo ./setup.sh"               # Execute the script
-  ]
-
-  connection {
-    type        = "ssh"
-    user        = "ec2-user"            # Specify the SSH user for the instance
-    private_key = file(""C:\Users\Sparx\Downloads\test.pem"")  # Specify the path to your private key
-    host        = self.public_ip       # Use public IP to connect
-  }
-}
