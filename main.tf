@@ -7,8 +7,8 @@ module "vpc" {
 
 module "terraform_backend" {
   source      = "./modules/s3_backend"
-  bucket_name = "your_bucket_name"
-  region      = "us-east-1"
+  bucket_name = "17022024"
+  region      = "us-east-2"
 }
 
 
@@ -19,8 +19,8 @@ module "subnets" {
   public_subnet_cidr_b  = "10.0.2.0/24"
   private_subnet_cidr_a = "10.0.3.0/24"
   private_subnet_cidr_b = "10.0.4.0/24"
-  availability_zone_a   = "eu-north-1a"
-  availability_zone_b   = "eu-north-1b"
+  availability_zone_a   = "us-north-1a"
+  availability_zone_b   = "us-north-1b"
 }
 
 module "igw" {
@@ -53,23 +53,23 @@ module "security_group" {
 module "ec2_instance" {
   source = "./modules/ec2_instance"
 
-  ami_id             = "ami-12345678"
+  ami_id             = "ami-0748d13ffbc370c2b (64-bit (Arm))"
   instance_type      = "t2.micro"
-  key_name           = "your_key_pair_name"
-  security_group_ids = ["sg-12345678"]
+  key_name           = "test.pem"
+  security_group_ids = [""]
 }
 
 # Provisioner to execute shell script
 provisioner "remote-exec" {
   inline = [
-    "chmod +x /tmp/setup.sh",          # Make script executable
-    "sudo /tmp/setup.sh"               # Execute the script
+    "chmod +x ./setup.sh",          # Make script executable
+    "sudo ./setup.sh"               # Execute the script
   ]
 
   connection {
     type        = "ssh"
     user        = "ec2-user"            # Specify the SSH user for the instance
-    private_key = file("path/to/your/private_key.pem")  # Specify the path to your private key
+    private_key = file(""C:\Users\Sparx\Downloads\test.pem"")  # Specify the path to your private key
     host        = self.public_ip       # Use public IP to connect
   }
 }
