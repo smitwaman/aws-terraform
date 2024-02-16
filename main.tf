@@ -14,8 +14,8 @@ module "subnets" {
   public_subnet_cidr_b  = "10.0.2.0/24"
   private_subnet_cidr_a = "10.0.3.0/24"
   private_subnet_cidr_b = "10.0.4.0/24"
-  availability_zone_a   = "us-north-1a"
-  availability_zone_b   = "us-north-1b"
+  availability_zone_a   = "us-east-2a"
+  availability_zone_b   = "us-east-2b"
 }
 
 module "igw" {
