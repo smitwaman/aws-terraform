@@ -1,5 +1,8 @@
 # modules/ec2_instance/main.tf
-
+variable "ami_id" {}
+variable "instance_type" {}
+variable "key_name" {}
+variable "security_group_ids" {}
 
 
 resource "aws_instance" "example" {
