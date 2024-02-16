@@ -5,11 +5,6 @@ module "vpc" {
 
 
 
-module "s3" {
-  source      = "./modules/s3"
-  bucket_name = "17022024"
-  region      = "us-east-2"
-}
 
 
 module "subnets" {
