@@ -1,10 +1,16 @@
 # modules/s3_backend/main.tf
 
-variable "bucket_name" {}
+variable "bucket_name" {
+
+bucket_name = "17022024"
+
+}
 variable "key" {
   default = "terraform.tfstate"
 }
-variable "region" {}
+variable "region" {
+region = "us-east-2"
+}
 
 terraform {
   backend "s3" {
