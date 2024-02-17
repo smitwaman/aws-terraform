@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Install Docker
-sudo yum update -y
-sudo yum install docker -y
-sudo service docker start
-sudo usermod -a -G docker ec2-user
+sudo apt update
+sudo apt install docker.io
+sudo systemctl start docker
+sudo usermod -a -G docker ubuntu
 
 # Install Jenkins
 sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
