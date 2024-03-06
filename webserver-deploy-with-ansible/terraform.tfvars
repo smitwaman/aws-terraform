@@ -1,0 +1,8 @@
+application = "dpt4-web"
+dns_name = "www"
+instance_profile = "dpt4-s3-full-access"
+keypair = "dpt4"
+instance_type = "t2.micro"
+asg_max_cap = "1"
+asg_min_cap = "1"
+asg_desired_cap = "1"
